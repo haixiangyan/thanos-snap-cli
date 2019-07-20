@@ -1,2 +1,2 @@
-# thanos.js
-Randomly delete half of files in current folder
+# thanos-snap
+Randomly delete half of files in current folder.

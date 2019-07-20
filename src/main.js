@@ -32,13 +32,13 @@ function main(targetPath) {
             // Show selected files
             console.log(chalk.yellow(`⚠️  Selected files: `) + FileUtils.toListString(selectedFiles))
 
-            // Ask user if he truly wants to ring the finger
+            // Ask user if he truly wants to snap the finger
             prompt([{
                 type: 'confirm',
-                name: 'ring',
-                message: '🚀 Ready to ring the finger? (y/n)'
+                name: 'snap',
+                message: '🚀 Ready to snap your finger? (y/n)'
             }]).then((answer) => {
-                if (answer.ring) {
+                if (answer.snap) {
                     // Delete selected files
                     console.log(chalk.yellow('💣 Deleting files...'))
                     FileUtils.deleteFilesRecurse(targetPath, selectedFiles)

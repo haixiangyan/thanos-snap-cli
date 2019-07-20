@@ -1,10 +1,10 @@
 {
-  "name": "thanos.js",
+  "name": "thanos-snap",
   "version": "1.0.0",
   "description": "Randomly delete half of files in current folder",
   "main": "index.js",
   "bin": {
-    "thanos": "index.js"
+    "snap": "index.js"
   },
   "directories": {
     "start": "index.js"
@@ -21,13 +21,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Haixiang6123/thanos.js.git"
+    "url": "git+https://github.com/Haixiang6123/thanos-snap.git"
   },
   "keywords": ["Thanos", "Delete", "Avengers"],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Haixiang6123/thanos.js/issues"
+    "url": "https://github.com/Haixiang6123/thanos-snap/issues"
   },
-  "homepage": "https://github.com/Haixiang6123/thanos.js#readme"
+  "homepage": "https://github.com/Haixiang6123/thanos-snap#readme"
 }
