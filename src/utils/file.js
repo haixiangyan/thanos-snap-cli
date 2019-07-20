@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
+const rimraf = require('rimraf')
 
 function readDirRecurseSync(targetPath, filesContainer) {
     // Get all files
@@ -45,10 +46,10 @@ function removeEmptyFolder(targetPath) {
     const files = fs.readdirSync(targetPath)
 
     files.forEach(file => {
-        // Is file ?
+        // Is dir ?
         if (fs.statSync(path.resolve(targetPath, file)).isDirectory()) {
             if (fs.readdirSync(path.resolve(targetPath, file)).length === 0) {
-                // fs.unlinkSync(path.resolve(targetPath, file))
+                rimraf.sync(path.resolve(targetPath, file))
                 console.log('✨ [REMOVED]: ' + path.resolve(targetPath, file))
             }
             else {
