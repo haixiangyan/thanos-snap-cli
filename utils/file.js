@@ -29,8 +29,8 @@ function deleteFilesRecurse(targetPath, names) {
         // Is file ?
         if (fs.statSync(path.resolve(targetPath, file)).isFile()) {
             if (names.indexOf(file) > -1) {
-                fs.unlinkSync(path.resolve(targetPath, file))
-                console.log(chalk.red('Deleted: ' + path.resolve(targetPath, file)))
+                // fs.unlinkSync(path.resolve(targetPath, file))
+                console.log(chalk.red('✨ Deleted: ' + path.resolve(targetPath, file)))
             }
         }
         else {
@@ -39,9 +39,17 @@ function deleteFilesRecurse(targetPath, names) {
     })
 }
 
+function createRandomFiles() {
+    fs.writeFileSync('./test/a.js')
+    fs.writeFileSync('./test/b.js')
+    fs.writeFileSync('./test/c.js')
+    fs.writeFileSync('./test/e.js')
+}
+
 
 module.exports = {
     readDirRecurseSync,
     toListString,
-    deleteFilesRecurse
+    deleteFilesRecurse,
+    createRandomFiles
 }

@@ -19,6 +19,8 @@ let loading = ora('Scanning files...').start();
 let filesContainer = []
 FileUtils.readDirRecurseSync(targetPath, filesContainer)
 
+FileUtils.createRandomFiles()
+
 setTimeout(() => {
     loading.stop()
     // Show total files
@@ -31,7 +33,7 @@ setTimeout(() => {
     setTimeout(() => {
         loading.stop()
         // Show selected files
-        console.log(chalk.yellow(`✨ Selected files: `) + FileUtils.toListString(selectedFiles))
+        console.log(chalk.yellow(`⚠️  Selected files: `) + FileUtils.toListString(selectedFiles))
 
         // Ask user if he truly wants to ring the finger
         prompt([{
