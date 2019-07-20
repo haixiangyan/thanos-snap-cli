@@ -1,5 +1,5 @@
 {
-  "name": "thanos-snap",
+  "name": "thanos-snap-cli",
   "version": "1.0.0",
   "description": "Randomly delete half of files in current folder",
   "main": "index.js",
