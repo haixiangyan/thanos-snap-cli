@@ -19,8 +19,6 @@ let loading = ora('Scanning files...').start();
 let filesContainer = []
 FileUtils.readDirRecurseSync(targetPath, filesContainer)
 
-FileUtils.createRandomFiles()
-
 setTimeout(() => {
     loading.stop()
     // Show total files
