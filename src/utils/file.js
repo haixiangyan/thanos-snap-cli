@@ -19,7 +19,6 @@ function readDirRecurseSync(targetPath, filesContainer) {
 }
 
 function toListString(list) {
-    console.log('jjjj ' + list.length)
     return '[\n' + list.map(item => `"${chalk.green(item)}"\n`).join('') + ']'
 }
 

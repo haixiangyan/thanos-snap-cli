@@ -1,6 +1,6 @@
 {
   "name": "thanos-snap-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Randomly delete half of files in current folder",
   "main": "index.js",
   "bin": {
@@ -21,13 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Haixiang6123/thanos-snap.git"
+    "url": "git+https://github.com/Haixiang6123/thanos-snap-cli.git"
   },
-  "keywords": ["Thanos", "Delete", "Avengers"],
+  "keywords": [
+    "Thanos",
+    "Delete",
+    "Avengers"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Haixiang6123/thanos-snap/issues"
+    "url": "https://github.com/Haixiang6123/thanos-snap-cli/issues"
   },
-  "homepage": "https://github.com/Haixiang6123/thanos-snap#readme"
+  "homepage": "https://github.com/Haixiang6123/thanos-snap-cli#readme"
 }

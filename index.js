@@ -9,7 +9,7 @@ const main = require('./src/main')
 if (process.argv.length === 2) {
     // Mock
     FileUtils.createRandomFiles()
-    console.log(chalk.yellow('/mock folder is created in your current directory. Now you can right the finger'))
+    console.log(chalk.yellow('/mock folder is created in current directory. Now snap your finger!'))
     return
 }
 
