@@ -1,52 +1,34 @@
 #!/usr/bin/env node
 const path = require('path')
 const chalk = require('chalk')
-const FileUtils = require('./utils/file')
-const RandomUtils = require('./utils/random')
-const ora = require('ora')
-const inquirer = require('inquirer')
-const prompt = inquirer.createPromptModule();
+const fs = require('fs')
+const HintsUtils = require('./src/utils/hints')
+const FileUtils = require('./src/utils/file')
+const main = require('./src/main')
 
-const targetPath = './test'
+if (process.argv.length === 2) {
+    // Mock
+    FileUtils.createRandomFiles()
+    console.log(chalk.yellow('/mock folder is created in your current directory. Now you can right the finger'))
+    return
+}
 
-// Show target dir
-console.log(chalk.blue(`☠️  Target directory: ${path.resolve(targetPath)}`))
+// Validate arguments
+if (process.argv.length > 3) {
+    // Show hints
+    HintsUtils.showHints()
+    return
+}
 
-// Start loading
-let loading = ora('Scanning files...').start();
+// process.argv.length === 2
+const userPath = process.argv[2]
+const targetPath = path.resolve(__dirname, userPath)
 
-// Get all files
-let filesContainer = []
-FileUtils.readDirRecurseSync(targetPath, filesContainer)
+// Validate path
+if (!fs.existsSync(targetPath) || !fs.statSync(targetPath).isDirectory()) {
+    console.log(chalk.red(`${targetPath} not exists or is not a directory`))
+    return
+}
 
-setTimeout(() => {
-    loading.stop()
-    // Show total files
-    console.log(chalk.yellow(`📦 Scanned files: `) + FileUtils.toListString(filesContainer))
-
-    // Randomly select files
-    loading = ora('Randomly selecting files...').start();
-    const selectedFiles = RandomUtils.randomHalfList(filesContainer)
-
-    setTimeout(() => {
-        loading.stop()
-        // Show selected files
-        console.log(chalk.yellow(`⚠️  Selected files: `) + FileUtils.toListString(selectedFiles))
-
-        // Ask user if he truly wants to ring the finger
-        prompt([{
-            type: 'confirm',
-            name: 'ring',
-            message: '🚀 Ready to ring the finger? (y/n)'
-        }]).then((answer) => {
-            if (answer.ring) {
-                console.log(chalk.yellow('💣 Deleting files...'))
-                FileUtils.deleteFilesRecurse(targetPath, selectedFiles)
-            }
-            else {
-                console.log('Bye.')
-            }
-        })
-    }, 2000)
-}, 2000)
-
+// Main logic
+main(targetPath)

@@ -121,4 +121,4 @@ typings/
 .idea
 
 # Test folder
-test
+mock
