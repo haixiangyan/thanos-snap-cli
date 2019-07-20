@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
+    "inquirer": "^6.5.0",
     "ora": "^3.4.0"
   },
   "devDependencies": {},
