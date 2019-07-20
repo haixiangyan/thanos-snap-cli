@@ -8,11 +8,13 @@ function randomHalfList(list) {
     let selectedItems = []
 
     for (let i = 0; count < length / 2; i++) {
-        const chosenIndex = getRandomInt(length - count)
-
-        selectedItems.push(list[chosenIndex])
-
+        // Select item
+        const selectedIndex = getRandomInt(length - count)
+        selectedItems.push(list[selectedIndex])
         count += 1
+
+        // Remove selected item
+        list.splice(selectedIndex, 1)
     }
 
     return selectedItems

@@ -39,8 +39,13 @@ function main(targetPath) {
                 message: '🚀 Ready to ring the finger? (y/n)'
             }]).then((answer) => {
                 if (answer.ring) {
+                    // Delete selected files
                     console.log(chalk.yellow('💣 Deleting files...'))
                     FileUtils.deleteFilesRecurse(targetPath, selectedFiles)
+
+                    // Cleanup empty folders
+                    console.log(chalk.yellow('💣 Removing empty folder...'))
+                    FileUtils.removeEmptyFolder(targetPath)
                 } else {
                     console.log("Oof, the universe can't keep the balance any more...")
                 }

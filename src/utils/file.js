@@ -9,7 +9,7 @@ function readDirRecurseSync(targetPath, filesContainer) {
     files.forEach(file => {
         // Is file ?
         if (fs.statSync(path.resolve(targetPath, file)).isFile()) {
-            filesContainer.push(file)
+            filesContainer.push(path.resolve(targetPath, file))
         }
         else {
             readDirRecurseSync(path.resolve(targetPath, file), filesContainer)
@@ -18,7 +18,8 @@ function readDirRecurseSync(targetPath, filesContainer) {
 }
 
 function toListString(list) {
-    return '[ ' + list.map(item => `"${chalk.green(item)}"`).join(', ') + ' ]'
+    console.log('jjjj ' + list.length)
+    return '[\n' + list.map(item => `"${chalk.green(item)}"\n`).join('') + ']'
 }
 
 function deleteFilesRecurse(targetPath, names) {
@@ -28,13 +29,31 @@ function deleteFilesRecurse(targetPath, names) {
     files.forEach(file => {
         // Is file ?
         if (fs.statSync(path.resolve(targetPath, file)).isFile()) {
-            if (names.indexOf(file) > -1) {
-                // fs.unlinkSync(path.resolve(targetPath, file))
+            if (names.indexOf(path.resolve(targetPath, file)) > -1) {
+                fs.unlinkSync(path.resolve(targetPath, file))
                 console.log(chalk.red('✨ [DELETED]: ' + path.resolve(targetPath, file)))
             }
         }
         else {
             deleteFilesRecurse(path.resolve(targetPath, file), names)
+        }
+    })
+}
+
+function removeEmptyFolder(targetPath) {
+    // Get all files
+    const files = fs.readdirSync(targetPath)
+
+    files.forEach(file => {
+        // Is file ?
+        if (fs.statSync(path.resolve(targetPath, file)).isDirectory()) {
+            if (fs.readdirSync(path.resolve(targetPath, file)).length === 0) {
+                // fs.unlinkSync(path.resolve(targetPath, file))
+                console.log('✨ [REMOVED]: ' + path.resolve(targetPath, file))
+            }
+            else {
+                removeEmptyFolder(path.resolve(targetPath, file))
+            }
         }
     })
 }
@@ -72,5 +91,6 @@ module.exports = {
     readDirRecurseSync,
     toListString,
     deleteFilesRecurse,
+    removeEmptyFolder,
     createRandomFiles
 }
