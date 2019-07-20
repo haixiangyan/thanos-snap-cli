@@ -22,7 +22,7 @@ if (process.argv.length > 3) {
 
 // process.argv.length === 2
 const userPath = process.argv[2]
-const targetPath = path.resolve(__dirname, userPath)
+const targetPath = path.resolve(process.cwd(), userPath)
 
 // Validate path
 if (!fs.existsSync(targetPath) || !fs.statSync(targetPath).isDirectory()) {
