@@ -1,0 +1,31 @@
+{
+  "name": "thanos.js",
+  "version": "1.0.0",
+  "description": "Randomly delete half of files in current folder",
+  "main": "index.js",
+  "bin": {
+    "thanos": "index.js"
+  },
+  "directories": {
+    "start": "index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "ora": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haixiang6123/thanos.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haixiang6123/thanos.js/issues"
+  },
+  "homepage": "https://github.com/Haixiang6123/thanos.js#readme"
+}

@@ -5,17 +5,17 @@ function getRandomInt(max) {
 function randomHalfList(list) {
     const length = list.length
     let count = 0
-    let chosenItems = []
+    let selectedItems = []
 
     for (let i = 0; count < length / 2; i++) {
         const chosenIndex = getRandomInt(length - count)
 
-        chosenItems.push(list[chosenIndex])
+        selectedItems.push(list[chosenIndex])
 
         count += 1
     }
 
-    return chosenItems
+    return selectedItems
 }
 
 module.exports = {

@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
 
 function readDirRecurseSync(targetPath, filesContainer) {
     // Get all files
@@ -15,6 +16,11 @@ function readDirRecurseSync(targetPath, filesContainer) {
     })
 }
 
+function toListString(list) {
+    return '[ ' + list.map(item => `"${chalk.green(item)}"`).join(', ') + ' ]'
+}
+
 module.exports = {
-    readDirRecurseSync
+    readDirRecurseSync,
+    toListString
 }
